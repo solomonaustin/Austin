@@ -1,0 +1,48 @@
+<div class="container mt-4" >
+    <div class="card">
+            <h1><b>TODO LIST</b></h1>
+<form>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"  class="form-control" id="name" placeholder="Enter Title"> 
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control"  [(ngModel)]="description" [ngModelOptions]="{standalone: true}" id="address" placeholder="(enter description)"> 
+      </div>
+
+      <div class="form-group">
+        <label>Due date</label>
+        <input type="date" class="form-control" [(ngModel)]="duedate" [ngModelOptions]="{standalone: true}" id="phone" placeholder="Enter Phone"> 
+      </div>
+    <button type="submit" (click)="save()" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</div>
+
+<div class="container mt-4" >
+ <h1><b>DATABASE</b></h1>
+<table class="table">
+  <thead>    
+  <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Due date</th>  
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let StudentItem of StudentArray">
+      <td>{{StudentItem.title  | uppercase}}</td>
+      <td>{{StudentItem.description }}</td>
+      <td>{{StudentItem.duedate }}</td>
+      <td>
+        <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Delete</button>            
+      </td>
+    </tr>          
+  </tbody>
+</table>
+
+</div>
