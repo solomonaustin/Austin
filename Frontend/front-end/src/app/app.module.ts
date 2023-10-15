@@ -3,13 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StudentcrudComponent } from './studentcrud/studentcrud.component';
+import { todoComponent } from './todo/todo.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentcrudComponent
+    todoComponent
   ],
   imports: [
     BrowserModule,
