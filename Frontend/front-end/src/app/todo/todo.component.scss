@@ -1,0 +1,55 @@
+$primary-font: Arial, sans-serif;
+$primary-bg-color: white;
+$container-max-width: 800px;
+$card-bg-color: white;
+$card-border: 1px solid #ddd;
+$card-border-radius: 5px;
+$card-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+$animation-duration: 1s;
+
+body {
+  font-family: $primary-font;
+  background-color: $primary-bg-color;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 20px auto;
+}
+
+.card {
+  background-color: $card-bg-color;
+  padding: 20px;
+  border: $card-border;
+  border-radius: $card-border-radius;
+  box-shadow: $card-box-shadow;
+  animation: fadeIn $animation-duration ease-in-out;
+}
+
+form,
+table {
+  margin-top: 20px;
+  animation: slideInUp $animation-duration ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
