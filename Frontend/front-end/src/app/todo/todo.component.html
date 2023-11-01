@@ -1,64 +1,47 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO List</title>
-</head>
+<!-- todo.component.html -->
 <body>
-<div class="container mt-4" *ngIf="!showForm">
-    <h1><b>Welcome to TODO LIST</b></h1>
-    <button type="button" class="btn btn-primary" (click)="showForm = true">start</button>
-</div>
-<div class="container mt-4" *ngIf="showForm">
-    <div class="card">
-        <h1><b>TODO LIST</b></h1>
-        <form>
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" [(ngModel)]="title" [ngModelOptions]="{standalone: true}" class="form-control" id="title" placeholder="Enter Title"> 
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <input type="text" class="form-control"  [(ngModel)]="description" [ngModelOptions]="{standalone: true}" id="description" placeholder="(enter description)"> 
-            </div>
-            <div class="form-group">
-                <label>Due date</label>
-                <input type="date" class="form-control" [(ngModel)]="duedate" [ngModelOptions]="{standalone: true}" id="date" placeholder="Enter Date"> 
-            </div>
-            <button type="submit" (click)="save()" class="btn btn-primary" >Submit</button>
-        </form>
+    <div class="container mt-4" *ngIf="!showForm">
+      <h1><b>Welcome to TODO LIST</b></h1>
+      <button type="button" class="btn btn-primary" (click)="showForm = true">start</button>
     </div>
-</div>
-<div class="container mt-4" *ngIf="showForm">
-    <h1><b>DATABASE</b></h1>
-    <table class="table">
+  
+    <div class="container mt-4" *ngIf="showForm">
+      <app-todo-form
+        [title]="title"
+        [description]="description"
+        [duedate]="duedate"
+        (saveClicked)="save()"
+      ></app-todo-form>
+    </div>
+  
+    <div class="container mt-4" *ngIf="showForm">
+      <h1><b>DATABASE</b></h1>
+      <table class="table">
         <thead>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Due date</th>  
-                <th scope="col">Option</th>
-            </tr>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Due date</th>
+            <th scope="col">Option</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let userItem of userArray">
-                <td>{{userItem.title  | uppercase}}</td>
-                <td>{{userItem.description }}</td>
-                <td>{{userItem.duedate }}</td>
-                <td>
-                    <button type="button" class="btn btn-success" (click)="setUpdate(userItem)">Edit</button>
-                    <button type="button" class="btn btn-danger" (click)="setDelete(userItem)">Delete</button>            
-                </td>
-            </tr>          
+          <tr *ngFor="let userItem of userArray">
+            <td>{{userItem.title | uppercase}}</td>
+            <td>{{userItem.description }}</td>
+            <td>{{userItem.duedate }}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="setUpdate(userItem)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="setDelete(userItem)">Delete</button>
+            </td>
+          </tr>
         </tbody>
-        <td class="text-center">
-            <button (click)="loadPreviousPage()" [disabled]="page === 1">Previous</button>
-            <button (click)="loadNextPage()"[disabled]="!userArray || userArray.length < pageSize">Next</button>
+        <td class="text-center" colspan="4">
+          <button (click)="loadPreviousPage()" [disabled]="page === 1">Previous</button>
+          <button (click)="loadNextPage()" [disabled]="!userArray || userArray.length < pageSize">Next</button>
         </td>
-    </table>
-</div>
-
-</body>
-</html> 
+      </table>
+    </div>
+  </body>
+  
+  

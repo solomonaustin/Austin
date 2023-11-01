@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+var todoSchema = new Schema({
 
     title: {
         type: String,
@@ -17,4 +17,4 @@ var userSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('employees', userSchema);
+module.exports = mongoose.model('todos', todoSchema);
