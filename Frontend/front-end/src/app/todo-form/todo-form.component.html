@@ -1,0 +1,19 @@
+<div class="card">
+    <h1><b>TODO LIST</b></h1>
+    <form #todoForm="ngForm"> 
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" [(ngModel)]="title" name="title" class="form-control" placeholder="Enter Title">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" [(ngModel)]="description" name="description" class="form-control" placeholder="(enter description)">
+      </div>
+      <div class="form-group">
+        <label>Due date</label>
+        <input type="date" [(ngModel)]="duedate" name="duedate" class="form-control" placeholder="Enter Date">
+      </div>
+      <button type="button" (click)="save()" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
