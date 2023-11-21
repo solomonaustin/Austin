@@ -1,0 +1,47 @@
+<!-- todo.component.html -->
+<body>
+    <div class="container mt-4" *ngIf="!showForm">
+      <h1><b>Welcome to TODO LIST</b></h1>
+      <button type="button" class="btn btn-primary" (click)="showForm = true">start</button>
+    </div>
+  
+    <div class="container mt-4" *ngIf="showForm">
+      <app-todo-form
+        [title]="title"
+        [description]="description"
+        [duedate]="duedate"
+        (saveClicked)="save()"
+      ></app-todo-form>
+    </div>
+  
+    <div class="container mt-4" *ngIf="showForm">
+      <h1><b>DATABASE</b></h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Due date</th>
+            <th scope="col">Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userItem of userArray">
+            <td>{{userItem.title | uppercase}}</td>
+            <td>{{userItem.description }}</td>
+            <td>{{userItem.duedate }}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="setUpdate(userItem)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="setDelete(userItem)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        <td class="text-center" colspan="4">
+          <button (click)="loadPreviousPage()" [disabled]="page === 1">Previous</button>
+          <button (click)="loadNextPage()" [disabled]="!userArray || userArray.length < pageSize">Next</button>
+        </td>
+      </table>
+    </div>
+  </body>
+  
+  
